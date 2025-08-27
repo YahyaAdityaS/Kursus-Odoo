@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- instruktur list view -->
+        <record id="instruktur_view_list" model="ir.ui.view">
+            <field name="name">instruktur.view.list</field>
+            <field name="model">instruktur</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="name" />
+                    <field name="street" />
+                    <field name="mobile" />
+                    <field name="email" />
+                    <field name="keahlian_ids" />
+                </list>
+            </field>
+        </record>
+
+        <!-- instruktur form view -->
+        <record id="instruktur_view_form" model="ir.ui.view">
+            <field name="name">instruktur.view.form</field>
+            <field name="model">instruktur</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group string="Data Instruktur">
+                            <group>
+                            <field name="name" string="Nama Instruktur"/>
+                            <field name="street" string="Alamat Instruktur"/>
+                            </group>
+                            <group>
+                             <field name="mobile" string="Nomor Telephone"/>
+                            <field name="email" string="Email"/>
+                            </group>
+                        </group>
+                        <group string="Keahlian"> 
+                            <field name="keahlian_ids" widget="many2many_tags" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- instruktur action window -->
+        <record id="instruktur_action" model="ir.actions.act_window">
+            <field name="name">Instruktur Training</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">instruktur</field>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+            </field>
+        </record>
+
+        <!-- Parent Menu -->
+        <menuitem id="setting_menu_categ" name="Kursus" sequence="1" />
+
+        <!-- Child Menu -->
+        <menuitem id="instruktur_menu_act" name="Instruktur" parent="master_data_menu_categ"
+            action="instruktur_action" sequence="2" />
+    </data>
+</odoo>
