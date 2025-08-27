@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- model.name list view -->
+        <record id="training_course_view_list" model="ir.ui.view">
+            <field name="name">training.course.view.list</field>
+            <field name="model">training.course</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="id" />
+                    <field name="name" />
+                    <field name="description" />
+                    <field name="user_id"/>
+                </list>
+            </field>
+        </record>
+        <record id="training_course_view_form" model="ir.ui.view">
+            <field name="name">training.course.view.form</field>
+            <field name="model">training.course</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <!-- Add your fields here -->
+                            <field name="name"/>
+                            <field name="user_id"/>
+                        </group>
+                        <notebook>
+                            <page name="ket" string="keterangan">
+                                <group>
+                                <field name="description"/>    
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- training.course action window -->
+        <record id="training_course_action" model="ir.actions.act_window">
+            <field name="name">Master Data Kursus</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">training.course</field>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+            </field>
+        </record>
+        <!-- This Menu Item will appear in the Upper bar, that's why It needs NO parent or action -->
+        <menuitem id="training_menu_root" name="SMK Telkom" sequence="1" web_icon="kursus,static/description/graduation.png"/>
+        <menuitem id="master_data_menu_categ" name="Master data" parent="training_menu_root" sequence="1"/>
+        <menuitem id="course_data_menu_act" name="Data kursus" parent="master_data_menu_categ" action="training_course_action" sequence="1"/>
+        
+    </data>
+</odoo>
